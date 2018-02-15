@@ -6,15 +6,12 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
-	"postinstall": "ng build --aot -prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
-	"@angular/cli": "1.6.4",
-    "@angular/compiler-cli": "^5.1.0",
     "@angular/animations": "^5.2.2",
     "@angular/cdk": "^5.1.0",
     "@angular/common": "^5.1.0",
@@ -44,6 +41,8 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
+    "@angular/cli": "1.6.4",
+    "@angular/compiler-cli": "^5.1.0",
     "@angular/language-service": "^5.1.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
