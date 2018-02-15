@@ -102,6 +102,8 @@ export class SprintComponent implements OnInit, OnDestroy {
     } );
 
     firebase.database().ref('shouldSync').on('value', (snapshot) => {
+      this.sprintPoints = 0;
+      
       if ( snapshot.val() 
             && snapshot.val().userId !== this.auth.getUserId() 
             &&  snapshot.val().route === this.router.url
@@ -111,7 +113,6 @@ export class SprintComponent implements OnInit, OnDestroy {
           this.getActiveSprint( this.boardId );
         });
       } else {
-        this.sprintPoints = 0;
         this.getActiveSprint( this.boardId );
       }
 
