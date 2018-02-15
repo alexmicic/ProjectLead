@@ -115,7 +115,13 @@ export class IssueComponent implements OnInit {
     this.issueService.deleteIssue(this.data.issueId)
                     .subscribe(
                       next => {
-                        firebase.database().ref('shouldSync').set(true);
+                        firebase.database().ref('shouldSync').set( 
+                          {
+                            userId: this.auth.getUserId(),
+                            route: this.router.url,
+                            timestamp: Date.now()
+                          }
+                        );
                         this.close(true);
                       },
                       error =>  this.errorMessage = <any>error);

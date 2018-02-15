@@ -54,7 +54,7 @@ export class IssueListComponent implements OnInit, OnDestroy {
     this.route.parent.params.subscribe( params => {
       this.id = params.id;
       this.getActiveSprint();
-      this.getIssuesForBoard(this.id);
+      //this.getIssuesForBoard(this.id);
     });
 
     this.route.parent.parent.parent.params.subscribe( params => {
@@ -83,7 +83,7 @@ export class IssueListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
+    firebase.database().ref('shouldSync').off();
   }
 
   getIssuesForBoard(id) {

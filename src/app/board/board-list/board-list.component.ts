@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ import firebase from '../../firebase.js';
   templateUrl: './board-list.component.html',
   styleUrls: ['./board-list.component.css']
 })
-export class BoardListComponent implements OnInit {
+export class BoardListComponent implements OnInit, OnDestroy {
   id: string;
   errorMessage: string;
   boards: Board[];
@@ -62,6 +62,10 @@ export class BoardListComponent implements OnInit {
       this.getBoardsForProject(this.id);
       console.log("The read failed: " + errorObject.code);
     });
+  }
+
+  ngOnDestroy() {
+    firebase.database().ref('shouldSync').off();
   }
 
   getBoardsForProject(id) {

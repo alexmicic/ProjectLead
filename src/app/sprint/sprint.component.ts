@@ -111,6 +111,7 @@ export class SprintComponent implements OnInit, OnDestroy {
           this.getActiveSprint( this.boardId );
         });
       } else {
+        this.sprintPoints = 0;
         this.getActiveSprint( this.boardId );
       }
 
@@ -125,6 +126,7 @@ export class SprintComponent implements OnInit, OnDestroy {
   ngOnDestroy () {
     this.dragula.unsubscribe();
     this.snackBar.dismiss();
+    firebase.database().ref('shouldSync').off();
   }
 
   getBoardColumns(boardId) {
